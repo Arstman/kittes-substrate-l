@@ -282,7 +282,7 @@ impl pallet_kitties::Config for Runtime {
     type Event = Event;
     type Randomness = RandomnessCollectiveFlip;
     type Currency = Balances;
-    type ReservableCurrency = Balance;
+    type KittyIndex = u32;
     type MintDeposit = MintDepositAmount;
 }
 
