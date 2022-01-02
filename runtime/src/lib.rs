@@ -44,7 +44,6 @@ pub use sp_runtime::{Perbill, Permill};
 /// Import the template pallet.
 pub use pallet_template;
 
-
 /// Import the kitties pallet.
 pub use pallet_kitties;
 
@@ -278,13 +277,18 @@ impl pallet_template::Config for Runtime {
     type Event = Event;
 }
 
-
 /// Configure the pallet-kitties in pallets/kitties.
 impl pallet_kitties::Config for Runtime {
     type Event = Event;
     type Randomness = RandomnessCollectiveFlip;
+    type Currency = Balances;
+    type ReservableCurrency = Balance;
+    type MintDeposit = MintDepositAmount;
 }
 
+parameter_types! {
+  pub const MintDepositAmount: Balance = 8;
+}
 // Create the runtime by composing the FRAME pallets that were previously configured.
 construct_runtime!(
     pub enum Runtime where
