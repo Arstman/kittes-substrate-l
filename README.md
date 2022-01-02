@@ -1,4 +1,4 @@
-# Kitties Pallet Practice for Substrate Learnning Course Lesson 1
+# Kitties Pallet Practice for Substrate Learnning Course Lesson 2
 
 #### Name: 彭亚伦
 #### Phase: 4th
