@@ -12,3 +12,7 @@
 ![Run node](https://raw.githubusercontent.com/Arstman/kittes-substrate-l/main/screenshots/kitties.png)
 ### Create Kitty
 ![Create Kitty](https://raw.githubusercontent.com/Arstman/kittes-substrate-l/main/screenshots/kittie_create.png)
+
+## To-Do
+1. add mock and tests
+2. more screenshots
