@@ -14,7 +14,7 @@
 
 
 ### test all passed
-![Run node](https://raw.githubusercontent.com/Arstman/kittes-substrate-l/main/screenshots/kkitties-all-test-passed.png)
+![test all pass](https://raw.githubusercontent.com/Arstman/kittes-substrate-l/main/screenshots/kitties-all-test-passed.png)
 
 ### Create Kitty
 ![Create Kitty](https://raw.githubusercontent.com/Arstman/kittes-substrate-l/main/screenshots/kitties-create.png)
