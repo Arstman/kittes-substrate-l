@@ -7,7 +7,6 @@ mod mock;
 #[cfg(test)]
 mod tests;
 
-
 #[frame_support::pallet]
 pub mod pallet {
     use codec::{Decode, Encode};
@@ -157,13 +156,14 @@ pub mod pallet {
             kitty_id: T::KittyIndex,
             price: Option<BalanceOf<T>>,
         ) -> DispatchResult {
+          //此处注意, 必须先判断kitty_id是否存在, 否则无论kitty存在与否, 都会先报错NotOwner
+            let mut kitty = Self::kitties(&kitty_id).ok_or(Error::<T>::InvalidKittyIndex)?;
             let who = ensure_signed(origin)?;
             ensure!(
                 Some(who.clone()) == Owner::<T>::get(kitty_id),
                 Error::<T>::NotOwner
             );
 
-            let mut kitty = Self::kitties(&kitty_id).ok_or(Error::<T>::InvalidKittyIndex)?;
             kitty.price = price.clone();
             Kitties::<T>::insert(kitty_id, Some(kitty));
             Self::deposit_event(Event::PriceUpdateForSale(who, kitty_id, price));
@@ -207,7 +207,7 @@ pub mod pallet {
             );
             payload.using_encoded(blake2_128)
         }
-
+// mint 方法用于产生kitty
         fn mint(owner: T::AccountId, dna: [u8; 16]) -> Result<T::KittyIndex, Error<T>> {
             let new_count = match Self::kitties_count() {
                 Some(cnt) => cnt
@@ -226,7 +226,7 @@ pub mod pallet {
             KittiesCount::<T>::put(new_count);
             Ok(kitty_id)
         }
-
+// transfer 一个kitty, 此为私有方法
         fn transfer_kitty_to(kitty_id: T::KittyIndex, to: &T::AccountId) -> Result<(), Error<T>> {
             let _kitty = Kitties::<T>::get(kitty_id).ok_or(Error::<T>::InvalidKittyIndex)?;
             let _owner = Owner::<T>::get(kitty_id).ok_or(Error::<T>::OwnerNotExist)?;
