@@ -10,7 +10,7 @@
 
 
 ### Run
-![Run node](https://raw.githubusercontent.com/Arstman/kittes-substrate-l/main/screenshots/kittie_run.png)
+![Run node](https://raw.githubusercontent.com/Arstman/kittes-substrate-l/main/screenshots/kitties-runn-a.png)
 
 
 ### test all passed
