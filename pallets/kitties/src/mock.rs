@@ -99,7 +99,15 @@ pub fn new_test_ext() -> sp_io::TestExternalities {
         .unwrap();
     // 生成带有初始账户以及金额的测试环境
     pallet_balances::GenesisConfig::<Test> {
-        balances: vec![(1, 10), (2, 20), (3, 30), (4, 40), (5, 50), (6, 60), (8, 200)],
+        balances: vec![
+            (1, 10),
+            (2, 20),
+            (3, 30),
+            (4, 40),
+            (5, 50),
+            (6, 60),
+            (8, 200),
+        ],
     }
     .assimilate_storage(&mut t)
     .unwrap();
